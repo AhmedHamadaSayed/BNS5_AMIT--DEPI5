@@ -3,21 +3,21 @@ import plotly.express as px
 from dash import Dash, dcc, html, Input, Output
 
 
-# Read data
+
 df = pd.read_csv("Dash.csv")
 
 
-# Create Dash app
+
 app = Dash(__name__)
 
 app.title = "Sales Dashboard"
 
 
-# Get numeric columns
+
 num_cols = df.select_dtypes(include="number").columns
 
 
-# Dashboard layout
+
 app.layout = html.Div([
 
     html.H1("Sales Dashboard"),
@@ -40,7 +40,7 @@ app.layout = html.Div([
 ])
 
 
-# Callback
+
 @app.callback(
     Output("pie-chart", "figure"),
     Input("column-dropdown", "value")
@@ -60,6 +60,6 @@ def update_pie(selected_col):
     return fig
 
 
-# Run app
+
 if __name__ == "__main__":
     app.run(debug=True)
